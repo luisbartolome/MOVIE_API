@@ -52,6 +52,9 @@ let topMovies = [{
     }
 ];
 
+//Serving static files
+app.use(express.static('public'));
+
 // GET route located at the endpoint "/" that return a default textual respomse
 app.get("/", (req, res) => {
     res.send("Welcome to my movie API!");
@@ -65,19 +68,11 @@ app.get("/movies", (req, res) => {
     res.json(topMovies);
 });
 
-//Serving static files
-app.use(express.static('public'));
-
 // Error Handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send("Ups! Something is not working!");
 });
-
-// listen for requests
-//app.listen(8080, () => {
-//});
-//console.log("Your app is listening on port 8080.");
 
 // determine the port to listen on by checking PORT first and giving it a value
 const port = process.env.PORT || 8080;
