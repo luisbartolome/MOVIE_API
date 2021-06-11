@@ -22,31 +22,31 @@ let topMovies = [{
         director: "Martin Scorsese",
         releaseDate: 1976,
     }, {
-        tittle: "Inception",
+        title: "Inception",
         director: "Christopher Nolan",
         releaseDate: 2010,
     }, {
-        tittle: "Super Bad",
+        title: "Super Bad",
         director: "Greg Mottola",
         releaseDate: 2007,
     }, {
-        tittle: "The Big Lewosky",
+        title: "The Big Lewosky",
         director: "Joel David Coen",
         releaseDate: 1998,
     }, {
-        tittle: "Raiders Of The Lost Arc",
+        title: "Raiders Of The Lost Arc",
         director: "Steven Spielberg",
         releaseDate: 1981,
     }, {
-        tittle: "Goodfellas",
+        title: "Goodfellas",
         director: "Martin Scorsese",
         releaseDate: 1990,
     }, {
-        tittle: "Eyes Wide Shut",
+        title: "Eyes Wide Shut",
         director: "Stanley Kubrick",
         releaseDate: 1999,
     }, {
-        tittle: "The Godfather",
+        title: "The Godfather",
         director: "Francis Ford Coppola",
         releaseDate: 1972,
     }
