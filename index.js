@@ -11,44 +11,44 @@ let topMovies = [{
 
         title: " The Shining",
         director: "Stanley Kubrik",
-        releaseDate: 1980,
+        genres: "Psychological Horror",
     },
     {
         title: "Apocalypse Now",
         director: "Francis Ford Coppola",
-        releaseDate: 1979,
+        genres: "Epic Psychological",
     }, {
         title: "Taxi Driver",
         director: "Martin Scorsese",
-        releaseDate: 1976,
+        genres: "Drama Thriller",
     }, {
         title: "Inception",
         director: "Christopher Nolan",
-        releaseDate: 2010,
+        genres: "Fition Action",
     }, {
         title: "Super Bad",
         director: "Greg Mottola",
-        releaseDate: 2007,
+        genres: "Comedy",
     }, {
         title: "The Big Lewosky",
         director: "Joel David Coen",
-        releaseDate: 1998,
+        genres: "Comedy",
     }, {
         title: "Raiders Of The Lost Arc",
         director: "Steven Spielberg",
-        releaseDate: 1981,
+        genres: "Action-Adventure",
     }, {
         title: "Goodfellas",
         director: "Martin Scorsese",
-        releaseDate: 1990,
+        genres: "Crime",
     }, {
         title: "Eyes Wide Shut",
         director: "Stanley Kubrick",
-        releaseDate: 1999,
+        genres: "Drama",
     }, {
         title: "The Godfather",
         director: "Francis Ford Coppola",
-        releaseDate: 1972,
+        genres: "Crime",
     }
 ];
 
