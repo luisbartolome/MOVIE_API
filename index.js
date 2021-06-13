@@ -7,7 +7,7 @@ const app = express();
 //Invoke Morgan middleware function
 app.use(morgan("common"));
 // Data Top Ten Movies
-let topMovies = [{
+const movies = [{
 
         title: " The Shining",
         director: "Stanley Kubrik",
