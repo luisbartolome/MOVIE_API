@@ -65,7 +65,7 @@ app.get("/documentation", (req, res) => {
 });
 //Express GET route located at the endpoint "/movies" that return a JSON object containing data about my top ten movies
 app.get("/movies", (req, res) => {
-    res.json(topMovies);
+    res.json(movies);
 });
 
 app.get("/movies/:title", (req, res) => {
