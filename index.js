@@ -72,29 +72,36 @@ app.get("/movies/:title", (req, res) => {
     res.send("Successful GET request returning movie title");
 });
 
-app.get("/directors", (req, res) => {
-    res.send("Successful GET requestreturning list of directors");
+app.get('/movies/genres/:genres', (req, res) => {
+    res.send('Successful GET request returning a description of the genre');
+});
+
+app.get('/movies/directors/:name', (req, res) => {
+    res.send('Successful GET request returning a description of the Director');
 });
 
 app.post("/users", (req, res) => {
     res.send("Successful POST request for user register");
 });
 
-app.delete("/users", (req, res) => {
-    res.send("Successful DELETE request for user unregister");
+app.put('/users/:username', (req, res) => {
+    res.send(
+        'The user: ' + req.params.username + ' ' + 'was successfully updated'
+    );
 });
 
-app.get("/users/:username/favorites", (req, res) => {
-    res.send("Successful GET request returning favorite movies");
+app.post('/users/:username/favourites/:title', (req, res) => {
+    res.send('Movie:' + req.params.title + ' ' + 'was added to favourites. ');
 });
 
-app.delete("/users/:username/favorites/:movie", (req, res) => {
+app.delete('/users/:username', (req, res) => {
+    res.send('User' + req.params.username + ' ' + 'was deleted.');
+});
+
+app.delete("/users/:username/favorites/:title", (req, res) => {
     res.send("Successful DELETE request for favorite movies");
 });
 
-app.post("/login", (req, res) => {
-    res.send("Successful POST request for user login");
-});
 
 // Error Handling
 app.use((err, req, res, next) => {
