@@ -72,7 +72,7 @@
             <td>GET</td>
             <td>/movies/genres/:genres</td>
             <td>None</td>
-            <td>A JSON object holding data about the genres</td>
+            <td>A text object holding data about the genres</td>
         </tr>
         <tr>
             <td>Get data about a movie director by name</td>
@@ -80,7 +80,7 @@
             <td>GET</td>
             <td>/movies/directors/:name</td>
             <td>None</td>
-            <td>A JSON object holding data about the director</td>
+            <td>A text object holding data about the director</td>
         </tr>
         <tr>
             <td>Register new user</td>
@@ -88,23 +88,23 @@
             <td>POST</td>
             <td></td>
             <td>
-                A JSON object holding data about the user to create. <br />
+                A text object holding data about the user to create. <br />
 
             </td>
             <td>
-                A JSON object holding data about the user that was added.
+                A text object holding data about the user that was added.
             </td>
         </tr>
         <tr>
             <td>Update a user information</td>
             <td>/users/[Username]</td>
-            <td>PATCH</td>
+            <td>POST</td>
             <td>/users/:username</td>
             <td>
-                a HTTP object holding data about the user to update. <br />
+                a JSON object holding data about the user to update. <br />
             </td>
             <td>
-                A text message indicating the info that was updated
+                A JSON text message indicating the info that was updated
                 <br />
 
             </td>
@@ -112,11 +112,11 @@
         <tr>
             <td>Add a movie to Favourites</td>
             <td>/users/[Username]/favourites/[MovieTitle]</td>
-            <td>POST</td>
+            <td>PATCH</td>
             <td>/users/:username/favourites/:title</td>
             <td>None</td>
             <td>
-                A text message indicating whether the movies was successfully added to favourites. <br />
+                A JSON text message indicating whether the movies was successfully added to favourites. <br />
 
             </td>
         </tr>
@@ -127,7 +127,7 @@
             <td>/users/:username/favourites/:title</td>
             <td>None</td>
             <td>
-                A text message indicating whether the movies was successfully removed from favourites.
+                A JSON text message indicating whether the movies was successfully removed from favourites.
             </td>
         </tr>
         <tr>
