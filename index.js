@@ -63,13 +63,19 @@ app.get("/", (req, res) => {
 app.get("/documentation", (req, res) => {
     res.sendFile("public/documentation.html", { root: __dirname });
 });
+
 //Express GET route located at the endpoint "/movies" that return a JSON object containing data about my top ten movies
 app.get("/movies", (req, res) => {
     res.json(movies);
 });
 
-app.get("/movies/:title", (req, res) => {
-    res.send("Successful GET request returning movie title");
+// Gets the data about a single movie, by title
+app.get('/movies/:title', (req, res) => {
+    res.json(
+        movies.find((movie) => {
+            return movie.title === req.params.title;
+        })
+    );
 });
 
 app.get('/movies/genres/:genres', (req, res) => {
@@ -80,17 +86,17 @@ app.get('/movies/directors/:name', (req, res) => {
     res.send('Successful GET request returning a description of the Director');
 });
 
-app.post("/users", (req, res) => {
-    res.send("Successful POST request for user register");
+app.post('/users', (req, res) => {
+    res.send('Registration succesful!');
 });
 
-app.patch('/users/:username', (req, res) => {
+app.post('/users/:username', (req, res) => {
     res.json(
         'The user: ' + req.params.username + ' ' + 'was successfully updated'
     );
 });
 
-app.post('/users/:username/favourites/:title', (req, res) => {
+app.patch('/users/:username/favourites/:title', (req, res) => {
     res.json('Movie:' + req.params.title + ' ' + 'was added to favourites. ');
 });
 
