@@ -84,18 +84,18 @@ app.post("/users", (req, res) => {
     res.send("Successful POST request for user register");
 });
 
-app.put('/users/:username', (req, res) => {
-    res.send(
+app.patch('/users/:username', (req, res) => {
+    res.json(
         'The user: ' + req.params.username + ' ' + 'was successfully updated'
     );
 });
 
 app.post('/users/:username/favourites/:title', (req, res) => {
-    res.send('Movie:' + req.params.title + ' ' + 'was added to favourites. ');
+    res.json('Movie:' + req.params.title + ' ' + 'was added to favourites. ');
 });
 
 app.delete('/users/:username', (req, res) => {
-    res.send('User' + req.params.username + ' ' + 'was deleted.');
+    res.json('User' + req.params.username + ' ' + 'was deleted.');
 });
 
 app.delete("/users/:username/favorites/:title", (req, res) => {
