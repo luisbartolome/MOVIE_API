@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <h1>Documentation Page for Movie API</h1>
+    <h1>Documentation Page for Movie API.</h1>
     <p>
         The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
         <br />
@@ -37,101 +37,101 @@
             <th>Respond body data format</th>
         </tr>
         <tr>
-            <td>Welcome message</td>
+            <td>Welcome message.</td>
             <td>/</td>
             <td>GET</td>
             <td></td>
             <td>None</td>
-            <td>A welcome text message</td>
+            <td>A welcome text message.</td>
         </tr>
         <tr>
-            <td>Get a list of all movies</td>
+            <td>Get a list of all movies.</td>
             <td>/movies</td>
             <td>GET</td>
             <td></td>
             <td>None</td>
-            <td>A JSON object holding data about all movies</td>
+            <td>A JSON object holding data about all movies.</td>
         </tr>
         <tr>
             <td>
-                Get data (description, genre, director, image URL) about a single movie by title
+                Get data (description, genre, director) about a single movie by title.
             </td>
             <td>/movies/[Title]</td>
             <td>GET</td>
             <td>/movies/:title</td>
             <td>None</td>
             <td>
-                A JSON object holding data about a single movie containing a title, description, genre, director, image. <br /><br /> Example: <br /> { "title": "Amadeus", "description": "The film follows a fictional rivalry between Mozart and Italian
-                composer Antonio Salieri at the court of Emperor Joseph II", "director": "Milos Forman", "genres": [ " Biography", "Drama", "History", "Music" ], "image": "https://www.amadeus-live.com/wp-content/uploads/2015/10/main-home-image5.jpg" }
-                <br />
+                A JSON object holding data about a single movie containing a title, description, genre, director. <br /><br />Example:
+                <br />{ "title": "Amadeus", "description": "The film follows a fictional rivalry between Mozart and Italian composer Antonio Salieri at the court of Emperor Joseph II", "director": "Milos Forman", "genres": [ " Biography", "Drama", "History",
+                "Music" ],} <br />
             </td>
         </tr>
         <tr>
-            <td>Get data about a movie genre by name</td>
+            <td>Get data about a movie genre by name.</td>
             <td>/movies/genres/[Genre]</td>
             <td>GET</td>
             <td>/movies/genres/:genres</td>
             <td>None</td>
-            <td>A text object holding data about the genres</td>
+            <td>A JSON object holding data about the genres.</td>
         </tr>
         <tr>
-            <td>Get data about a movie director by name</td>
+            <td>Get data about a movie director by name.</td>
             <td>/movies/directors/[Name]</td>
             <td>GET</td>
             <td>/movies/directors/:name</td>
             <td>None</td>
-            <td>A text object holding data about the director</td>
+            <td>A JSON object holding data about the director.</td>
         </tr>
         <tr>
-            <td>Register new user</td>
+            <td>Register new user.</td>
             <td>/users</td>
             <td>POST</td>
             <td></td>
             <td>
-                A text object holding data about the user to create. <br />
+                A JSON object holding data about the user to create. <br />
 
             </td>
             <td>
-                A text object holding data about the user that was added.
+                A JSON object holding data about the user that was added.
             </td>
         </tr>
         <tr>
-            <td>Update a user information</td>
+            <td>Update a user information.</td>
             <td>/users/[Username]</td>
-            <td>POST</td>
+            <td>PUT</td>
             <td>/users/:username</td>
             <td>
                 a JSON object holding data about the user to update. <br />
             </td>
             <td>
-                A JSON text message indicating the info that was updated
+                A text message indicating the info that was updated.
                 <br />
 
             </td>
         </tr>
         <tr>
-            <td>Add a movie to Favourites</td>
+            <td>Add a movie to Favourites.</td>
             <td>/users/[Username]/favourites/[MovieTitle]</td>
-            <td>PATCH</td>
+            <td>POST</td>
             <td>/users/:username/favourites/:title</td>
             <td>None</td>
             <td>
-                A JSON text message indicating whether the movies was successfully added to favourites. <br />
+                A text message indicating whether the movies was successfully added to favourites. <br />
 
             </td>
         </tr>
         <tr>
-            <td>Remove movie from Favourites</td>
+            <td>Remove movie from Favourites.</td>
             <td>/users/[Username]/favourites/[MovieTitle]</td>
             <td>DELETE</td>
             <td>/users/:username/favourites/:title</td>
             <td>None</td>
             <td>
-                A JSON text message indicating whether the movies was successfully removed from favourites.
+                A text message indicating whether the movies was successfully removed from favourites.
             </td>
         </tr>
         <tr>
-            <td>Unregister an existing user</td>
+            <td>Unregister an existing user.</td>
             <td>/users/[Username]</td>
             <td>DELETE</td>
             <td>/users/:username</td>
