@@ -52,16 +52,20 @@ const movies = [{
     }
 ];
 
+// Error Handling
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Ups! Something is not working!');
+});
+
 //Serving static files
 app.use(express.static('public'));
+
+app.use(bodyParser.json());
 
 // GET route located at the endpoint "/" that return a default textual respomse
 app.get("/", (req, res) => {
     res.send("Welcome to my movie API!");
-});
-//GET route located at the endpoint "/documentation"
-app.get("/documentation", (req, res) => {
-    res.sendFile("public/documentation.html", { root: __dirname });
 });
 
 //Express GET route located at the endpoint "/movies" that return a JSON object containing data about my top ten movies
@@ -90,30 +94,24 @@ app.post('/users', (req, res) => {
     res.send('Registration succesful!');
 });
 
-app.post('/users/:username', (req, res) => {
-    res.json(
+app.put('/users/:username', (req, res) => {
+    res.send(
         'The user: ' + req.params.username + ' ' + 'was successfully updated'
     );
 });
 
 app.patch('/users/:username/favourites/:title', (req, res) => {
-    res.json('Movie:' + req.params.title + ' ' + 'was added to favourites. ');
+    res.send('Movie:' + req.params.title + ' ' + 'was added to favourites.');
+});
+
+app.delete('/users/:username/favorites/:title', (req, res) => {
+    res.send('Movie:' + req.params.title + ' ' + 'has been removed from favourites');
 });
 
 app.delete('/users/:username', (req, res) => {
-    res.json('User' + req.params.username + ' ' + 'was deleted.');
+    res.send('User' + req.params.username + ' ' + 'was deleted.');
 });
 
-app.delete("/users/:username/favorites/:title", (req, res) => {
-    res.send("Successful DELETE request for favorite movies");
-});
-
-
-// Error Handling
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send("Ups! Something is not working!");
-});
 
 // determine the port to listen on by checking PORT first and giving it a value
 const port = process.env.PORT || 8080;
