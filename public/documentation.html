@@ -23,7 +23,8 @@
 <body>
     <h1>Documentation Page for Movie API.</h1>
     <p>
-        The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
+        The objective of this project is to build the server-side component of a “movies” web application. The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their
+        personal information, and create a list of their favorite movies.
         <br />
         <br />
     </p>
@@ -34,13 +35,13 @@
             <th>HTTP Method</th>
             <th>URL parameters</th>
             <th>Request body data format</th>
-            <th>Respond body data format</th>
+            <th>Response body data format</th>
         </tr>
         <tr>
             <td>Welcome message.</td>
             <td>/</td>
             <td>GET</td>
-            <td></td>
+            <td>None</td>
             <td>None</td>
             <td>A welcome text message.</td>
         </tr>
@@ -48,7 +49,7 @@
             <td>Get a list of all movies.</td>
             <td>/movies</td>
             <td>GET</td>
-            <td></td>
+            <td>None</td>
             <td>None</td>
             <td>A JSON object holding data about all movies.</td>
         </tr>
@@ -61,9 +62,9 @@
             <td>/movies/:title</td>
             <td>None</td>
             <td>
-                A JSON object holding data about a single movie containing a title, description, genre, director. <br /><br />Example:
-                <br />{ "title": "Amadeus", "description": "The film follows a fictional rivalry between Mozart and Italian composer Antonio Salieri at the court of Emperor Joseph II", "director": "Milos Forman", "genres": [ " Biography", "Drama", "History",
-                "Music" ],} <br />
+                Return a JSON object by movie title. Holding data about a single movie, containing an ID, description, genre, director, image URL. Example:<br /><br />Example:
+                <br />{ "Genre": { "Name": "Drama", "Description": "Drama is a mode of fictional representation..." }, "Director": { "Name": "Robert Zemeckis", "Bio": "is an American film director, film producer....", "Birth": "1952", "Death": "" }, "Actors":
+                [], "_id": "60638444d623c718144797d9", "Title": "Forrest Gump", "Description": "The presidencies of Kennedy and Johnson...", "ImagePath": "https://m.media-amazon.com/images.jpg", "Featured": true }, "Music" ],} <br />
             </td>
         </tr>
         <tr>
@@ -72,27 +73,27 @@
             <td>GET</td>
             <td>/movies/genres/:genres</td>
             <td>None</td>
-            <td>A JSON object holding data about the genres.</td>
+            <td>A JSON object about a genre,containing name and genre.(description) by name/title (e.g., “Thriller”).</td>
         </tr>
         <tr>
-            <td>Get data about a movie director by name.</td>
+            <td>Return data about a director (bio, birth year, death year) by name.</td>
             <td>/movies/directors/[Name]</td>
             <td>GET</td>
             <td>/movies/directors/:name</td>
             <td>None</td>
-            <td>A JSON object holding data about the director.</td>
+            <td>A JSON object holding data about the director.Example: Name: David Fincher, Bio: is an American film director..., Birth: 1962, Death: None.</td>
         </tr>
         <tr>
-            <td>Register new user.</td>
+            <td>Allow new users to register.</td>
             <td>/users</td>
             <td>POST</td>
-            <td></td>
+            <td>None</td>
             <td>
-                A JSON object holding data about the user to create. <br />
+                A JSON object holding data about the user to create,structured JSON in this format like: <br />
 
             </td>
             <td>
-                A JSON object holding data about the user that was added.
+                Example: ID: Integer, Username: String, Password: String, Email: String, Birthday: Date.
             </td>
         </tr>
         <tr>
@@ -101,43 +102,43 @@
             <td>PUT</td>
             <td>/users/:username</td>
             <td>
-                a JSON object holding data about the user to update. <br />
+                a JSON object holding data about the user to update,structured JSON in this format like:<br />
             </td>
             <td>
-                A text message indicating the info that was updated.
+                A JSON object indicating the info that was updated.Example: { Username: req.body.Username, Password: req.body.Password, Email: req.body.Email, Birthday: req.body.Birthday }
                 <br />
 
             </td>
         </tr>
         <tr>
-            <td>Add a movie to Favourites.</td>
+            <td>Allow users to add a movie to their list of favorites.</td>
             <td>/users/[Username]/favourites/[MovieTitle]</td>
             <td>POST</td>
             <td>/users/:username/favourites/:title</td>
             <td>None</td>
             <td>
-                A text message indicating whether the movies was successfully added to favourites. <br />
+                A JSON object indicating whether the movies was successfully added to favourites. <br />
 
             </td>
         </tr>
         <tr>
-            <td>Remove movie from Favourites.</td>
+            <td>Allow users to remove a movie from their list of favorites.</td>
             <td>/users/[Username]/favourites/[MovieTitle]</td>
             <td>DELETE</td>
             <td>/users/:username/favourites/:title</td>
             <td>None</td>
             <td>
-                A text message indicating whether the movies was successfully removed from favourites.
+                A JSON object indicating whether the movies was successfully removed from favourites.
             </td>
         </tr>
         <tr>
-            <td>Unregister an existing user.</td>
+            <td>Allow existing users to deregister.</td>
             <td>/users/[Username]</td>
             <td>DELETE</td>
             <td>/users/:username</td>
             <td>None</td>
             <td>
-                A text message indicating whether the user was successfully deleted.
+                A text message indicating whether the user has been removed.
             </td>
         </tr>
     </table>
