@@ -61,8 +61,6 @@ app.use((err, req, res, next) => {
 //Serving static files
 app.use(express.static('public'));
 
-app.use(bodyParser.json());
-
 // GET route located at the endpoint "/" that return a default textual respomse
 app.get("/", (req, res) => {
     res.send("Welcome to my movie API!");
@@ -95,23 +93,36 @@ app.post('/users', (req, res) => {
 });
 
 app.put('/users/:username', (req, res) => {
-    res.send(
-        'The user: ' + req.params.username + ' ' + 'was successfully updated'
-    );
-});
+    res.send({
+        movie: req.params.username,
+        updated: true,
+    })
+})
+
 
 app.patch('/users/:username/favourites/:title', (req, res) => {
-    res.send('Movie:' + req.params.title + ' ' + 'was added to favourites.');
-});
+    res.send({
+        movie: req.params.title,
+        favourite: true,
+    })
+})
 
 app.delete('/users/:username/favorites/:title', (req, res) => {
-    res.send('Movie:' + req.params.title + ' ' + 'has been removed from favourites');
-});
+    res.send({
+        movie: req.params.title,
+        deleted: true,
+    })
+})
 
 app.delete('/users/:username', (req, res) => {
-    res.send('User' + req.params.username + ' ' + 'was deleted.');
+    res.send("Successful DELETE request for user unregister");
 });
 
+// Error Handling
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Ups! Something is not working!');
+});
 
 // determine the port to listen on by checking PORT first and giving it a value
 const port = process.env.PORT || 8080;
