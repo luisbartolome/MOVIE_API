@@ -1,12 +1,12 @@
 const express = require('express');
-
+bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 //To import morgan into my package
 morgan = require('morgan');
 //This ariable is what I will use to route my HTTP request and responses
 const app = express();
-//Invoke Morgan middleware function
-app.use(morgan("common"));
+
 // Data Top Ten Movies
 const movies = [{
 
@@ -57,7 +57,8 @@ const movies = [{
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
-app.use(morgan('common'));
+app.use(morgan("common"));
+
 
 // GET route located at the endpoint "/" that return a default textual respomse
 app.get("/", (req, res) => {
