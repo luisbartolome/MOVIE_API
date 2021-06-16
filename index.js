@@ -1,5 +1,6 @@
 const express = require('express');
 
+
 //To import morgan into my package
 morgan = require('morgan');
 //This ariable is what I will use to route my HTTP request and responses
@@ -52,14 +53,11 @@ const movies = [{
     }
 ];
 
-// Error Handling
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Ups! Something is not working!');
-});
+//Serving static files middleware
 
-//Serving static files
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(morgan('common'));
 
 // GET route located at the endpoint "/" that return a default textual respomse
 app.get("/", (req, res) => {
