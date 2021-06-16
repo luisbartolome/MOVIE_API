@@ -1,6 +1,5 @@
 const express = require('express');
-bodyParser = require('body-parser');
-const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
 //To import morgan into my package
 morgan = require('morgan');
@@ -57,7 +56,7 @@ const movies = [{
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
-app.use(morgan("common"));
+
 
 
 // GET route located at the endpoint "/" that return a default textual respomse
