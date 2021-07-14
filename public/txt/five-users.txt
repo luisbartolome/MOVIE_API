@@ -1,0 +1,9 @@
+var user1 = {
+  Username : "David",
+  Password : "1234",
+  Email : "davidgarcia@gmail.com",
+  Birthday: new Date("1977-03-23"),
+  FavoriteMovies : [],
+}
+
+db.users.insertOne(user1)
