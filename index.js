@@ -9,7 +9,7 @@ const app = express();
 const movies = [{
 
         title: " The Shining",
-        director: "Stanley Kubrik",
+        director: "Stanley Kubrick",
         genres: "Psychological Horror",
     },
     {
