@@ -23,7 +23,7 @@ const movies = [{
     }, {
         title: "Inception",
         director: "Christopher Nolan",
-        genres: "Fition Action",
+        genres: "Fiction Action",
     }, {
         title: "Super Bad",
         director: "Greg Mottola",
