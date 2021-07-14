@@ -7,3 +7,10 @@ var user1 = {
 }
 
 db.users.insertOne(user1)
+
+// Responce
+
+        "acknowledged" : true,
+            "insertedId" : ObjectId("60eef00ac780f14c524456c3")
+
+
