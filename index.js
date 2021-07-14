@@ -15,7 +15,7 @@ const movies = [{
     {
         title: "Apocalypse Now",
         director: "Francis Ford Coppola",
-        genres: "Epic Psychological",
+        genres: "Drama",
     }, {
         title: "Taxi Driver",
         director: "Martin Scorsese",
