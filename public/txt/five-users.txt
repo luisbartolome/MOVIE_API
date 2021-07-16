@@ -13,4 +13,64 @@ db.users.insertOne(user1)
         "acknowledged" : true,
             "insertedId" : ObjectId("60eef00ac780f14c524456c3")
 
+var user2 = {
+   Username : "alexei",
+   Password : "6789",
+   Email : "alexei22@gmail.com",
+   Birthday: new Date("1977-03-23"),
+   FavoriteMovies : [],
+}
+
+db.users.insertOne(user2)
+
+// Responce
+
+      "acknowledged" : true,
+          "insertedId" : ObjectId("60f145bbdea16419387e4359")
+
+var user3 = {
+   Username : "sami22",
+   Password : "4229",
+   Email : "sami22blond@hotmail.com",
+   Birthday: new Date("1977-03-23"),
+   FavoriteMovies : [],
+}
+
+db.users.insertOne(user3)
+
+// Responce
+
+      "acknowledged" : true,
+          "insertedId" : ObjectId("60f14647dea16419387e435a")
+
+var user4 = {
+   Username : "Hich",
+   Password : "5432",
+   Email : "hich@hotmail.com",
+   Birthday: new Date("2002-02-02"),
+   FavoriteMovies : [],
+}
+
+db.users.insertOne(user4)
+
+// Responce
+
+      "acknowledged" : true,
+          "insertedId" : ObjectId("60f146addea16419387e435b")
+
+var user5 = {
+   Username : "marthabarchen",
+   Password : "4311",
+   Email : "marthayalah@hotmail.com",
+   Birthday: new Date("2001-01-01"),
+   FavoriteMovies : [],
+}
+
+db.users.insertOne(user5)
+
+// Responce
+
+      "acknowledged" : true,
+          "insertedId" : ObjectId("60f14732dea16419387e435c")
+
 
