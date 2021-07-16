@@ -217,7 +217,7 @@ var movie10 = {
   },
   Director: {
      Name: "Francis Ford Coppola",
-    Bio: "Francia Ford Coppola is an American film director, producer and screenwriter. He was a central figure in the New Hollywood filmmaking movement of the 1960s and 1970s, and is widely considered to be one of the greatest filmmakers of all time.",
+    Bio: "Francis Ford Coppola is an American film director, producer and screenwriter. He was a central figure in the New Hollywood filmmaking movement of the 1960s and 1970s, and is widely considered to be one of the greatest filmmakers of all time.",
     Birth: "1939"
   },
   ImagePath: "https://www.imdb.com/title/tt0068646/mediaviewer/rm746868224/?ref_=tt_ov_i",
