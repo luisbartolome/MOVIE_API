@@ -1,0 +1,92 @@
+var director1 = {
+    Name: "Stanley Kubrick",
+    Bio: "Stanley Kubrick was an American film director, producer, screenwriter, and photographer. He is frequently cited as one of the greatest filmmakers in cinematic history. His films, which are mostly adaptations of novels or short stories, cover a wide range of genres and are noted for their realism, dark humor, unique cinematography, extensive set designs, and evocative use of music.",
+    Birth: "1928",
+    Death: "1999"
+    }
+
+db.directors.insertOne(director1)
+
+// Responce
+
+    "acknowledged" : true,
+        "insertedId" : ObjectId("60f6951fd2f95f31f65c4d32")
+
+var director2 = {
+    Name: "Francis Ford Coppola",
+    Bio: "Francis Ford Coppola is an American film director, producer and screenwriter. He was a central figure in the New Hollywood filmmaking movement of the 1960s and 1970s, and is widely considered to be one of the greatest filmmakers of all time.",
+    Birth: "1939"
+    }
+
+db.directors.insertOne(director2)
+
+// Responce
+
+    "acknowledged" : true,
+        "insertedId" : ObjectId("60f6958ed2f95f31f65c4d33")
+
+var director3 = {
+    Name: "Martin Scorsese",
+    Bio: "Martin Scorsese is an American film director, producer, screenwriter, and actor. One of the major figures of the New Hollywood era, he is widely regarded as one of the greatest and most influential directors in film history. ",
+    Birth: "1942"
+    }
+
+db.directors.insertOne(director3)
+
+// Responce
+
+    "acknowledged" : true,
+        "insertedId" : ObjectId("60f695fbd2f95f31f65c4d34")
+
+var director4 = {
+    Name: "Christopher Nolan",
+    Bio: "Christopher Nolan is a British-American film director, producer, and screenwriter. His directorial efforts have grossed more than US$5 billion worldwide, garnered 36 Oscar nominations and 11 wins.",
+    Birth: "1970"
+    }
+
+db.directors.insertOne(director4)
+
+// Responce
+
+    "acknowledged" : true,
+        "insertedId" : ObjectId("60f6965fd2f95f31f65c4d35")
+
+var director5 = {
+    Name: "Greg Mottola",
+    Bio: "Greg Mottola is an American film director, screenwriter, and television director.",
+    Birth: "1964"
+    }
+
+db.directors.insertOne(director5)
+
+// Responce
+
+    "acknowledged" : true,
+        "insertedId" : ObjectId("60f696e3d2f95f31f65c4d38")
+
+var director6 = {
+    Name: "Joel David Coen",
+     Bio: "The Coen Brothers are American film directors, producers, screenwriters, and editors. Their films span many genres and styles, which they frequently subvert or parody.[3] Their most acclaimed works include Raising Arizona (1987), Miller's Crossing (1990), Fargo (1996), The Big Lebowski (1998), O Brother, Where Art Thou? (2000), No Country for Old Men (2007), Burn After Reading (2008), A Serious Man (2009), True Grit (2010), Inside Llewyn Davis (2013), and The Ballad of Buster Scruggs (2018).",
+     Birth: "1954",
+    }
+
+db.directors.insertOne(director6)
+
+// Responce
+
+    "acknowledged" : true,
+        "insertedId" : ObjectId("60f69781d2f95f31f65c4d39")
+
+var director7 = {
+    Name: "Steven Spielberg",
+    Bio: "Steven Spielberg  is an American film director, producer, and screenwriter. He began his career in the New Hollywood era, and is one of the most commercially successful directors in history. Spielberg is the recipient of various accolades, including two Academy Awards for Best Director, a Kennedy Center honor, and a Cecil B. DeMille Award.",
+    Birth: "1946"
+    }
+
+db.directors.insertOne(director7)
+
+// Responce
+
+
+    "acknowledged" : true,
+        "insertedId" : ObjectId("60f697ebd2f95f31f65c4d3a")
