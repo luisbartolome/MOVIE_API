@@ -1,0 +1,47 @@
+var genre1 = {
+    Name: "Drama",
+    Description: "Drama film is a genre that relies on the emotional and relational development of realistic characters. ... Whether heroes or heroines are facing a conflict from the outside or a conflict within themselves, Drama film aims to tell an honest story of human struggles."
+  }
+
+  db.genres.insertOne(genre1)
+
+  // Responce
+
+   "acknowledged" : true,
+        "insertedId" : ObjectId("60f69256d2f95f31f65c4d2e")
+
+var genre2 = {
+    Name: "Adventure",
+    Description: "Adventure films are a genre of film whose plots feature elements of travel. They typically involve protagonists who must leave their home or place of comfort and go to far away lands to fulfill a goal. Settings play an important role in adventure films, sometimes as big as the characters themselves."
+  }
+
+  db.genres.insertOne(genre2)
+
+  //Responce
+
+  "acknowledged" : true,
+        "insertedId" : ObjectId("60f692efd2f95f31f65c4d2f")
+
+var genre3 = {
+    Name: "Comedy",
+    Description: "A comedy film is a category of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect."
+  }
+
+db.genres.insertOne(genre3)
+
+// Responce
+
+ "acknowledged" : true,
+        "insertedId" : ObjectId("60f6936dd2f95f31f65c4d30")
+
+var genre4 = {
+    Name: "Thriller",
+    Description: "Thriller is a genre of fiction, having numerous, often overlapping subgenres. Thrillers are characterized and defined by the moods they elicit, giving viewers heightened feelings of suspense, excitement, surprise, anticipation and anxiety",
+    }
+
+db.genres.insertOne(genre4)
+
+// Responce
+
+    "acknowledged" : true,
+        "insertedId" : ObjectId("60f693f9d2f95f31f65c4d31")
