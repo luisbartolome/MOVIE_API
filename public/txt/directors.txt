@@ -22,8 +22,9 @@ db.directors.insertOne(director2)
 
 // Responce
 
-    "acknowledged" : true,
-        "insertedId" : ObjectId("60f6958ed2f95f31f65c4d33")
+    
+        "acknowledged" : true,
+        "insertedId" : ObjectId("60f7fc22aa1e79682a6c1495")
 
 var director3 = {
     Name: "Martin Scorsese",
