@@ -4,52 +4,64 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 //This ariable is what I will use to route my HTTP request and responses
 const app = express();
+// import morgan into my package
+const morgan = require('morgan');
+const app = express();
+// import mongoose
+const mongoose = require('mongoose');
+const Models = require('./models/models.js');
+
+const Movies = Models.Movie;
+const Users = Models.User;
+
+mongoose.connect('mongodb://localhost:27017/test', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
 // Data Top Ten Movies
 const movies = [{
 
-        title: " The Shining",
-        director: "Stanley Kubrick",
-        genres: "Psychological Horror",
-    },
-    {
-        title: "Apocalypse Now",
-        director: "Francis Ford Coppola",
-        genres: "Drama",
-    }, {
-        title: "Taxi Driver",
-        director: "Martin Scorsese",
-        genres: "Drama Thriller",
-    }, {
-        title: "Inception",
-        director: "Christopher Nolan",
-        genres: "Fiction Action",
-    }, {
-        title: "Super Bad",
-        director: "Greg Mottola",
-        genres: "Comedy",
-    }, {
-        title: "The Big Lewosky",
-        director: "Joel David Coen",
-        genres: "Comedy",
-    }, {
-        title: "Raiders Of The Lost Arc",
-        director: "Steven Spielberg",
-        genres: "Action-Adventure",
-    }, {
-        title: "Goodfellas",
-        director: "Martin Scorsese",
-        genres: "Crime",
-    }, {
-        title: "Eyes Wide Shut",
-        director: "Stanley Kubrick",
-        genres: "Drama",
-    }, {
-        title: "The Godfather",
-        director: "Francis Ford Coppola",
-        genres: "Crime",
-    }
-];
+    title: " The Shining",
+    director: "Stanley Kubrick",
+    genres: "Psychological Horror",
+}, {
+    title: "Apocalypse Now",
+    director: "Francis Ford Coppola",
+    genres: "Drama",
+}, {
+    title: "Taxi Driver",
+    director: "Martin Scorsese",
+    genres: "Drama Thriller",
+}, {
+    title: "Inception",
+    director: "Christopher Nolan",
+    genres: "Fiction Action",
+}, {
+    title: "Super Bad",
+    director: "Greg Mottola",
+    genres: "Comedy",
+}, {
+    title: "The Big Lewosky",
+    director: "Joel David Coen",
+    genres: "Comedy",
+}, {
+    title: "Raiders Of The Lost Arc",
+    director: "Steven Spielberg",
+    genres: "Action-Adventure",
+}, {
+    title: "Goodfellas",
+    director: "Martin Scorsese",
+    genres: "Crime",
+}, {
+    title: "Eyes Wide Shut",
+    director: "Stanley Kubrick",
+    genres: "Drama",
+}, {
+    title: "The Godfather",
+    director: "Francis Ford Coppola",
+    genres: "Crime",
+}];
 
 //Serving static files middleware
 
