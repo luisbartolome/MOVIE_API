@@ -16,50 +16,6 @@ mongoose.connect('mongodb://localhost:27017/test', {
     useUnifiedTopology: true,
 });
 
-// Data Top Ten Movies
-const movies = [{
-
-    title: " The Shining",
-    director: "Stanley Kubrick",
-    genres: "Psychological Horror",
-}, {
-    title: "Apocalypse Now",
-    director: "Francis Ford Coppola",
-    genres: "Drama",
-}, {
-    title: "Taxi Driver",
-    director: "Martin Scorsese",
-    genres: "Drama Thriller",
-}, {
-    title: "Inception",
-    director: "Christopher Nolan",
-    genres: "Fiction Action",
-}, {
-    title: "Super Bad",
-    director: "Greg Mottola",
-    genres: "Comedy",
-}, {
-    title: "The Big Lewosky",
-    director: "Joel David Coen",
-    genres: "Comedy",
-}, {
-    title: "Raiders Of The Lost Arc",
-    director: "Steven Spielberg",
-    genres: "Action-Adventure",
-}, {
-    title: "Goodfellas",
-    director: "Martin Scorsese",
-    genres: "Crime",
-}, {
-    title: "Eyes Wide Shut",
-    director: "Stanley Kubrick",
-    genres: "Drama",
-}, {
-    title: "The Godfather",
-    director: "Francis Ford Coppola",
-    genres: "Crime",
-}];
-
 //Serving static files middleware
 
 app.use(express.static('public'));
@@ -71,27 +27,54 @@ app.get("/", (req, res) => {
     res.send("Welcome to my movie API!");
 });
 
-//Express GET route located at the endpoint "/movies" that return a JSON object containing data about my top ten movies
-app.get("/movies", (req, res) => {
-    res.json(movies);
-});
-
-// Gets the data about a single movie, by title
-app.get('/movies/:title', (req, res) => {
-    res.json(
-        movies.find((movie) => {
-            return movie.title === req.params.title;
+//return JSON object when at /movies
+app.get('/movies', (req, res) => {
+    Movies.find()
+        .then((movies) => {
+            res.status(200).json(movies);
         })
-    );
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
-app.get('/movies/genres/:genres', (req, res) => {
-    res.send('Successful GET request returning a description of the genre');
+// GETS JSON movie info when looking for specific title
+app.get('/movies/:Title', (req, res) => {
+    Movies.findOne({ Title: req.params.Title })
+        .then((movie) => {
+            res.status(200).json(movie);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
-app.get('/movies/directors/:name', (req, res) => {
-    res.send('Successful GET request returning a description of the Director');
+//Return data about a genre (description) by name/title (e.g., "Drama")
+app.get('/movies/genres/:Genre', (req, res) => {
+    Movies.findOne({ 'Genre.Name': req.params.Genre })
+        .then((genre) => {
+            res.status(200).json(genre.Genre);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
+
+//get info on director when looking for specific director
+app.get('/movies/director/:Name', (req, res) => {
+    Movies.findOne({ 'Director.Name': req.params.Name })
+        .then((director) => {
+            res.status(200).json(director.Director);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
+});
+
 // Get all users
 app.get('/users', (req, res) => {
     Users.find()
@@ -199,12 +182,6 @@ app.post('/users/:Username/favorites/:MovieID', (req, res) => {
         });
 });
 
-app.patch('/users/:username/favourites/:title', (req, res) => {
-    res.send({
-        movie: req.params.title,
-        favourite: true,
-    })
-});
 // “Allow users to remove a movie from their list of favorites” endpoint
 app.delete('/users/:Username/favorites/:MovieID', (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.Username }, {
