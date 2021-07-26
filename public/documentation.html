@@ -55,22 +55,43 @@
             <th>Request body data format</th>
             <th>Response body data format</th>
         </tr>
+        <!--tr>
+        <td>Welcome message.</td>
+        <td>/</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>None</td>
+        <td>A welcome text message.</td>
+        </tr> -->
         <tr>
-            <td>Welcome message.</td>
-            <td>/</td>
-            <td>GET</td>
-            <td>None</td>
-            <td>None</td>
-            <td>A welcome text message.</td>
-        </tr>
-        <tr>
-            <td>Get a list of all movies.</td>
+            <td>Get a list of all movies to th users.</td>
             <td>/movies</td>
             <td>GET</td>
             <td>None</td>
             <td>None</td>
             <td>A JSON object holding data about all movies.</td>
+            <td><em><br><p>{
+                <span>Genre:</span> {<br>
+                    <span>Name:</span> String,<br>
+                    <span>Description:</span> String,<br>
+                    },<br>
+                    <span>Director:</span> {<br>
+                    <span>Name:</span> String,<br>
+                    <span>Bio:</span> String,<br>
+                    <span>Birth:</span> Integer,<br>
+                    <span>Death:</span> Integer<br>
+                    },<br>
+                    <span>Actors:</span> [],<br>
+                    <span>_id:</span> Integer,<br>
+                    <span>Title:</span>: String,<br>
+                    <span>Description:</span> String,<br>
+                    <span>ImagePath:</span> "https:..",<br>
+                    <span>Featured:</span> Boolean<br>
+                }</p>
+                    </em>
+            </td>
         </tr>
+
         <tr>
             <td>
                 Get data (description, genre, director) about a single movie by title.
@@ -82,7 +103,12 @@
             <td>
                 Return a JSON object by movie title. Holding data about a single movie, containing an ID, description, genre, director, image URL. Example:<br /><br />Example:
                 <br />{ "Genre": { "Name": "Drama", "Description": "Drama is a mode of fictional representation..." }, "Director": { "Name": "Robert Zemeckis", "Bio": "is an American film director, film producer....", "Birth": "1952", "Death": "" }, "Actors":
-                [], "_id": "60638444d623c718144797d9", "Title": "Forrest Gump", "Description": "The presidencies of Kennedy and Johnson...", "ImagePath": "https://m.media-amazon.com/images.jpg", "Featured": true }, "Music" ],} <br />
+                [], "_id": "60638444d623c718144797d9", "Title": "Forrest Gump", "Description": "The presidencies of Kennedy and Johnson...", "ImagePath": "https://m.media-amazon.com/images.jpg", "Featured": true }, "Music" ],}
+                <br />
+            </td>
+            <td><em><br><p>
+                <span>Name:</span> “Drama”,<br>
+                <span>Description:</span> "Drama film is a genre that relies on the emotional ..."  </p></em>
             </td>
         </tr>
         <tr>
@@ -99,7 +125,15 @@
             <td>GET</td>
             <td>/movies/directors/:name</td>
             <td>None</td>
-            <td>A JSON object holding data about the director.Example: Name: David Fincher, Bio: is an American film director..., Birth: 1962, Death: None.</td>
+            <td>A JSON object holding data about the director.</td>
+            <td> <em><br><p>
+            
+                <span>Director:</span> {<br>
+                <span>Name:</span> "JQuentin Tarantino"<br>
+                <span>Bio:</span> "JQuentin Jerome Tarantino is an American film director..."<br>
+                <span>Birth:</span> "1963",<br>
+              }</p> </em>
+            </td>
         </tr>
         <tr>
             <td>Allow new users to register.</td>
@@ -107,11 +141,20 @@
             <td>POST</td>
             <td>None</td>
             <td>
-                A JSON object holding data about the user to create,structured JSON in this format like: <br />
+                A JSON object holding data about the user to create,structured JSON in this format.<br />
 
+                <p>{ <br> Username: string (required)<br> Password: string (required)<br> Email: String (required)<br> Birthday: date <br> }</p>
             </td>
             <td>
-                Example: ID: Integer, Username: String, Password: String, Email: String, Birthday: Date.
+                <em><p>{
+                    <span>FavoriteMovies: [ movieByIDs]
+                    ],</span>
+                    <span>_id: Number</span>
+                    <span>Username:</span> "Haleh",<br>
+                    <span>Password:</span> "1234",<br>
+                    <span>Email:</span> "hgh030156@gmail.com",<br>
+                    <span>Birthday:</span> "1977-03-23",<br>
+                  }</p></em>
             </td>
         </tr>
         <tr>
@@ -123,10 +166,10 @@
                 a JSON object holding data about the user to update,structured JSON in this format like:<br />
             </td>
             <td>
-                A JSON object indicating the info that was updated.Example: { Username: req.body.Username, Password: req.body.Password, Email: req.body.Email, Birthday: req.body.Birthday }
+                A JSON object indicating the info that was updated.
                 <br />
-
             </td>
+            <td><em><p>{ <br> Username: string <br> Password: String <br> Email: String <br> Birhdat: Date} </p></em></td>
         </tr>
         <tr>
             <td>Allow users to add a movie to their list of favorites.</td>
