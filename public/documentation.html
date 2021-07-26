@@ -102,15 +102,10 @@
             <td>/movies/:title</td>
             <td>None</td>
             <td>
-                Return a JSON object by movie title. Holding data about a single movie, containing an ID, description, genre, director, image URL. Example:<br /><br />Example:
-                <br />{ "Genre": { "Name": "Drama", "Description": "Drama is a mode of fictional representation..." }, "Director": { "Name": "Robert Zemeckis", "Bio": "is an American film director, film producer....", "Birth": "1952", "Death": "" }, "Actors":
-                [], "_id": "60638444d623c718144797d9", "Title": "Forrest Gump", "Description": "The presidencies of Kennedy and Johnson...", "ImagePath": "https://m.media-amazon.com/images.jpg", "Featured": true }, "Music" ],}
-                <br />
+                Return a JSON object by movie title. Holding data about a single movie, containing an ID, description, genre, director, image URL.<br /><br />
+
             </td>
-            <td><em><br><p>
-                <span>Name:</span> “Drama”,<br>
-                <span>Description:</span> "Drama film is a genre that relies on the emotional ..."  </p></em>
-            </td>
+            <td><em><p>{ <br> 'Genre': { <br> 'Name': 'Drama', <br> 'Description':'About Drama' <br>}, <br> 'Director': {<br> 'Name': 'Milos Forman', <br> 'Bio': 'About Milos Forman', <br> 'Birth': '1932' <br>, <br> 'Death': '2018'  <br> }, <br> 'Actors':[],<br>'_id': 'Number', <br> 'title': 'Amadeus', <br> 'Description': 'About the Film'</p></em></td>
         </tr>
         <tr>
             <td>Get data about a movie genre by name.</td>
@@ -118,7 +113,11 @@
             <td>GET</td>
             <td>/movies/genres/:genres</td>
             <td>None</td>
-            <td>A JSON object about a genre,containing name and genre.(description) by name/title (e.g., “Thriller”).</td>
+            <td>A JSON object about a genre,containing name and genre.(description) by name/title.</td>
+            <td><em><br><p>
+                <span>Name:</span> “Drama”,<br>
+                <span>Description:</span> "Drama film is a genre that relies on the emotional ..."  </p></em>
+            </td>
         </tr>
         <tr>
             <td>Return data about a director (bio, birth year, death year) by name.</td>
@@ -140,6 +139,7 @@
             <td>Allow new users to register.</td>
             <td>/users</td>
             <td>POST</td>
+            <td>/users</td>
             <td>None</td>
             <td>
                 A JSON object holding data about the user to create,structured JSON in this format.<br />
