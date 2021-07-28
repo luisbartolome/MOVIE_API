@@ -70,28 +70,7 @@
             <td>None</td>
             <td>None</td>
             <td>A JSON object holding data about all movies.</td>
-            <td><em><br><p>{
-                <span>Genre:</span> {<br>
-                    <span>Name:</span> String,<br>
-                    <span>Description:</span> String,<br>
-                    },<br>
-                    <span>Director:</span> {<br>
-                    <span>Name:</span> String,<br>
-                    <span>Bio:</span> String,<br>
-                    <span>Birth:</span> Integer,<br>
-                    <span>Death:</span> Integer<br>
-                    },<br>
-                    <span>Actors:</span> [],<br>
-                    <span>_id:</span> Integer,<br>
-                    <span>Title:</span>: String,<br>
-                    <span>Description:</span> String,<br>
-                    <span>ImagePath:</span> "https:..",<br>
-                    <span>Featured:</span> Boolean<br>
-                }</p>
-                    </em>
-            </td>
         </tr>
-
         <tr>
             <td>
                 Get data (description, genre, director) about a single movie by title.
@@ -101,22 +80,21 @@
             <td>/movies/:title</td>
             <td>None</td>
             <td>
-                Return a JSON object by movie title. Holding data about a single movie, containing an ID, description, genre, director, image URL.<br /><br />
-
+                Return a JSON object by movie title. Holding data about a single movie, containing an ID, description, genre, director, image URL.Example:<br /><br />
+                <p class="json">
+                    { "Genre": { "Name": "Drama", "Description": "Drama is a mode of fictional representation..." }, "Director": { "Name": "Robert Zemeckis", "Bio": "is an American film director, film producer....", "Birth": "1952", "Death": "" }, "Actors": [], "_id": "60638444d623c718144797d9",
+                    "Title": "Forrest Gump", "Description": "The presidencies of Kennedy and Johnson...", "ImagePath": "https://m.media-amazon.com/images.jpg", "Featured": true },
+                </p>
             </td>
-            <td><em><p>{ <br> 'Genre': { <br> 'Name': 'Drama', <br> 'Description':'About Drama' <br>}, <br> 'Director': {<br> 'Name': 'Milos Forman', <br> 'Bio': 'About Milos Forman', <br> 'Birth': '1932' <br>, <br> 'Death': '2018'  <br> }, <br> 'Actors':[],<br>'_id': 'Number', <br> 'title': 'Amadeus', <br> 'Description': 'About the Film'</p></em></td>
-        </tr>
-        <tr>
-            <td>Get data about a movie genre by name.</td>
-            <td>/movies/genres/[Genre]</td>
-            <td>GET</td>
-            <td>/movies/genres/:genres</td>
-            <td>None</td>
-            <td>A JSON object about a genre,containing name and genre.(description) by name/title.</td>
-            <td><em><br><p>
+            <tr>
+                <td>Get data about a movie genre by name.</td>
+                <td>/movies/genres/[Genre]</td>
+                <td>GET</td>
+                <td>/movies/genres/:genres</td>
+                <td>None</td>
+                <td>A JSON object about a genre,containing name and genre.(description) by name/title.</td>
                 <span>Name:</span> “Drama”,<br>
-                <span>Description:</span> "Drama film is a genre that relies on the emotional ..."  </p></em>
-            </td>
+                <span>Description:</span> "Drama film is a genre that relies on the emotional ..."</tr>
         </tr>
         <tr>
             <td>Return data about a director (bio, birth year, death year) by name.</td>
@@ -124,14 +102,11 @@
             <td>GET</td>
             <td>/movies/directors/:name</td>
             <td>None</td>
-            <td>A JSON object holding data about the director.</td>
-            <td> <em><br><p>
-            
+            <td>A JSON object holding data about the director.
                 <span>Director:</span> {<br>
                 <span>Name:</span> "JQuentin Tarantino"<br>
                 <span>Bio:</span> "JQuentin Jerome Tarantino is an American film director..."<br>
-                <span>Birth:</span> "1963",<br>
-              }</p> </em>
+                <span>Birth:</span> "1963",<br> } /td
             </td>
         </tr>
         <tr>
@@ -141,20 +116,16 @@
             <td>/users</td>
             <td>None</td>
             <td>
-                A JSON object holding data about the user to create,structured JSON in this format.<br />
-
+                A JSON object holding data about the user to create,structured JSON in this format.Example:<br />
                 <p>{ <br> Username: string (required)<br> Password: string (required)<br> Email: String (required)<br> Birthday: date <br> }</p>
-            </td>
-            <td>
-                <em><p>{
-                    <span>FavoriteMovies: [ movieByIDs]
+                {
+                <span>FavoriteMovies: [ movieByIDs]
                     ],</span>
-                    <span>_id: Number</span>
-                    <span>Username:</span> "Haleh",<br>
-                    <span>Password:</span> "1234",<br>
-                    <span>Email:</span> "hgh030156@gmail.com",<br>
-                    <span>Birthday:</span> "1977-03-23",<br>
-                  }</p></em>
+                <span>_id: Number</span>
+                <span>Username:</span> "Haleh",<br>
+                <span>Password:</span> "1234",<br>
+                <span>Email:</span> "hgh030156@gmail.com",<br>
+                <span>Birthday:</span> "1977-03-23",<br> }
             </td>
         </tr>
         <tr>
@@ -166,15 +137,15 @@
                 a JSON object holding data about the user to update,structured JSON in this format like:<br />
             </td>
             <td>
-                A JSON object indicating the info that was updated.
+                A JSON object indicating the info that was updated.Example:
+                <p>{ <br> Username: string <br> Password: String <br> Email: String <br> Birhdat: Date} </p>
                 <br />
             </td>
-            <td><em><p>{ <br> Username: string <br> Password: String <br> Email: String <br> Birhdat: Date} </p></em></td>
         </tr>
         <tr>
             <td>Allow users to add a movie to their list of favorites.</td>
             <td>/users/[Username]/favourites/[MovieTitle]</td>
-            <td>PATCH</td>
+            <td>PUSH</td>
             <td>/users/:username/favourites/:title</td>
             <td>None</td>
             <td>
