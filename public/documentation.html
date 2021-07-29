@@ -82,8 +82,10 @@
             <td>
                 Return a JSON object by movie title. Holding data about a single movie, containing an ID, description, genre, director, image URL.Example:<br /><br />
                 <p class="json">
-                    { "Genre": { "Name": "Drama", "Description": "Drama is a mode of fictional representation..." }, "Director": { "Name": "Robert Zemeckis", "Bio": "is an American film director, film producer....", "Birth": "1952", "Death": "" }, "Actors": [], "_id": "60638444d623c718144797d9",
-                    "Title": "Forrest Gump", "Description": "The presidencies of Kennedy and Johnson...", "ImagePath": "https://m.media-amazon.com/images.jpg", "Featured": true },
+                    "Genre": "Name": "Drama", "Description": "Drama is a mode of fictional representation...", "Director": "Name": "Francis Ford Coppola", "Bio": "Francis Ford Coppola is an American film director, producer and screenwriter. He was a central figure in the
+                    New Hollywood filmmaking movement of the 1960s and 1970s, and is widely considered to be one of the greatest filmmakers of all time.", "Birth": "1939", "Death": "" }, "Actors": [], "_id": "60f7fd76aa1e79682a6c1496", "Title": "Apocalypse
+                    Now", "Description": "A U.S. Army officer serving in Vietnam is tasked with assassinating a renegade Special Forces Colonel who sees himself as a god.", "ImagePath": "https://www.imdb.com/title/tt0078788/mediaviewer/rm1007713024/?ref_=tt_ov_i",
+                    "Featured": true,
                 </p>
             </td>
             <tr>
@@ -92,9 +94,12 @@
                 <td>GET</td>
                 <td>/movies/genres/:genres</td>
                 <td>None</td>
-                <td>A JSON object about a genre,containing name and genre.(description) by name/title.</td>
-                <span>Name:</span> “Drama”,<br>
-                <span>Description:</span> "Drama film is a genre that relies on the emotional ..."</tr>
+                <td>A JSON object about a genre,containing name and genre.(description) by name/title.Example:<br><br>
+                    <span>Name:</span> “Drama”,<br>
+                    <span>Description:</span> ""Drama film is a genre that relies on the emotional and relational development of realistic characters. ... Whether heroes or heroines are facing a conflict from the outside or a conflict within themselves,
+                    Drama film aims to tell an honest story of human struggles."
+                </td>
+            </tr>
         </tr>
         <tr>
             <td>Return data about a director (bio, birth year, death year) by name.</td>
@@ -102,11 +107,13 @@
             <td>GET</td>
             <td>/movies/directors/:name</td>
             <td>None</td>
-            <td>A JSON object holding data about the director.
-                <span>Director:</span> {<br>
-                <span>Name:</span> "JQuentin Tarantino"<br>
-                <span>Bio:</span> "JQuentin Jerome Tarantino is an American film director..."<br>
-                <span>Birth:</span> "1963",<br> } /td
+            <td>A JSON object holding data about the director.Example:<br><br>
+                <span>Director:</span><br>
+                <span>Name:</span> "Stanley Kubrick"<br>
+                <span>Bio:</span> "Stanley Kubrick was an American film director, producer, screenwriter, and photographer. He is frequently cited as one of the greatest filmmakers in cinematic history. His films, which are mostly adaptations of novels
+                or short stories, cover a wide range of genres and are noted for their realism, dark humor, unique cinematography, extensive set designs, and evocative use of music".<br>
+                <span>Birth:</span> "1928",<br>
+                <span>Death:</span>"1999".<br>
             </td>
         </tr>
         <tr>
@@ -122,9 +129,9 @@
                 <span>FavoriteMovies: [ movieByIDs]
                     ],</span>
                 <span>_id: Number</span>
-                <span>Username:</span> "Haleh",<br>
-                <span>Password:</span> "1234",<br>
-                <span>Email:</span> "hgh030156@gmail.com",<br>
+                <span>Username:</span> "sami22",<br>
+                <span>Password:</span> "4229",<br>
+                <span>Email:</span> "samiblond@hotmail.com",<br>
                 <span>Birthday:</span> "1977-03-23",<br> }
             </td>
         </tr>
@@ -138,14 +145,21 @@
             </td>
             <td>
                 A JSON object indicating the info that was updated.Example:
-                <p>{ <br> Username: string <br> Password: String <br> Email: String <br> Birhdat: Date} </p>
+                <p>{ <br> Username: string. <br> Password: String. <br> Email: String. <br> Birthday: Date.<br> } </p>
                 <br />
+                <span>FavoriteMovies: [ movieByIDs]
+                    ],</span>
+                <span>_id: Number</span>
+                <span>Username:</span> "sami22",<br>
+                <span>Password:</span> "3443",<br>
+                <span>Email:</span> "samiblond32@hotmail.com",<br>
+                <span>Birthday:</span> "1977-03-23",<br> }
             </td>
         </tr>
         <tr>
             <td>Allow users to add a movie to their list of favorites.</td>
             <td>/users/[Username]/favourites/[MovieTitle]</td>
-            <td>PUSH</td>
+            <td>PATCH</td>
             <td>/users/:username/favourites/:title</td>
             <td>None</td>
             <td>
@@ -170,7 +184,8 @@
             <td>/users/:username</td>
             <td>None</td>
             <td>
-                A text message indicating whether the user has been removed.
+                A text message indicating whether the user has been removed.Example:<br>
+                <p>martabarchen was deleted.</p>
             </td>
         </tr>
     </table>
