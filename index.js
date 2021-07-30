@@ -21,6 +21,12 @@ mongoose.connect('mongodb://localhost:27017/test', {
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
+//app argument is passing here to ensures that Express is available in  “auth.js” file as well.
+let auth = require('./auth')(app);
+
+const passport = require('passport');
+require('./passport');
+
 app.use(morgan('common'));
 
 // GET route located at the endpoint "/" that return a default textual respomse
