@@ -1,8 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 uuid = require("uuid");
-const cors = require('cors');
-app.use(cors());
 //To import morgan into my package
 const morgan = require('morgan');
 //This ariable is what I will use to route my HTTP request and responses
