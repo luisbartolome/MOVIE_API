@@ -5,7 +5,10 @@ uuid = require("uuid");
 const morgan = require('morgan');
 //This ariable is what I will use to route my HTTP request and responses
 const app = express();
-// import mongoose
+//Cors access (allowed domains)
+const cors = require('cors');
+app.use(cors());
+// import mongoose with the REST API
 const mongoose = require('mongoose');
 const Models = require('./models/models.js');
 
