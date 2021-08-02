@@ -15,6 +15,8 @@ let movieSchema = mongoose.Schema({
     Featured: Boolean,
 });
 
+const bcrypt = require('bcrypt');
+
 let userSchema = mongoose.Schema({
     Username: { type: String, required: true },
     Password: { type: String, required: true },
