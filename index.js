@@ -171,6 +171,10 @@ app.get('/users/:Username', passport.authenticate("jwt", {
     check('Password', 'Password is required').not().isEmpty(),
     check('Email', 'Email does not appear to be valid').isEmail(),
 ], (req, res) => {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
     Users.findOne({ Username: req.params.Username })
         .then((user) => {
             res.json(user);
