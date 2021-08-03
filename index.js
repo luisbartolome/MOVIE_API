@@ -110,6 +110,7 @@ app.get('/users', passport.authenticate("jwt", {
     });
 // Add Users
 app.post('/users', (req, res) => {
+    let hashedPassword = Users.hashPassword(req.body.Password);
     // check if a user with the username provided by the client already exists
     Users.findOne({ Username: req.body.Username })
         .then((user) => {
