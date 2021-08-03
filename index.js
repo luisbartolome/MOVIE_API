@@ -162,7 +162,15 @@ app.post(
 // Get a user by username
 app.get('/users/:Username', passport.authenticate("jwt", {
     session: false
-}), (req, res) => {
+}), [
+    check('Username', 'Username is required').isLength({ min: 5 }),
+    check(
+        'Username',
+        'Username contains non alphanumeric characters - not allowed.'
+    ).isAlphanumeric(),
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Email', 'Email does not appear to be valid').isEmail(),
+], (req, res) => {
     Users.findOne({ Username: req.params.Username })
         .then((user) => {
             res.json(user);
