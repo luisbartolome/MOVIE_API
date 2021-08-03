@@ -8,6 +8,9 @@ const app = express();
 //Cors access (allowed domains)
 const cors = require('cors');
 app.use(cors());
+
+const { check, validationResult } = require('express-validator');
+
 // import mongoose with the REST API
 const mongoose = require('mongoose');
 const Models = require('./models/models.js');
