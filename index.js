@@ -69,6 +69,7 @@ app.get('/movies/:Title', passport.authenticate("jwt", {
         });
 });
 
+
 //Return data about a genre (description) by name/title (e.g., "Drama")
 app.get('/movies/genres/:Genre', passport.authenticate("jwt", {
     session: false
@@ -76,6 +77,20 @@ app.get('/movies/genres/:Genre', passport.authenticate("jwt", {
     Movies.findOne({ 'Genre.Name': req.params.Genre })
         .then((genre) => {
             res.status(200).json(genre.Genre);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
+});
+
+// get all directors
+app.get('/directors', passport.authenticate("jwt", {
+    session: false
+}), (req, res) => {
+    Directors.find()
+        .then((director) => {
+            res.status(200).json(directors);
         })
         .catch((err) => {
             console.error(err);
