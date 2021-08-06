@@ -29,7 +29,7 @@ let directorSchema = mongoose.Schema({
     Name: { type: String, require: true },
     Bio: { type: String, require: true },
     Birth: Date,
-    d
+
 });
 
 userSchema.statics.hashPassword = (password) => {
