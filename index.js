@@ -18,10 +18,11 @@ const Models = require('./models/models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect('mongodb://localhost:27017/test', {
+mongoose.connect('mongodb + srv: //myFlixDB:gaykepper-79@myflixdb.ndx00.mongodb.net/myFlixDB?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
+
 
 //Serving static files middleware
 
