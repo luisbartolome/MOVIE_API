@@ -18,9 +18,9 @@ const Models = require('./models/models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect('mongodb + srv: //myFlixDB:gaykepper-79@myflixdb.ndx00.mongodb.net/myFlixDB?retryWrites=true&w=majority', {
+mongoose.connect(process.env.CONNECTION_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
 });
 
 
