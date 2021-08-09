@@ -90,8 +90,8 @@ app.get('/directors', passport.authenticate("jwt", {
     session: false
 }), (req, res) => {
     Directors.find()
-        .then((director) => {
-            res.status(200).json(directors);
+        .then((Director) => {
+            res.status(200).json(director);
         })
         .catch((err) => {
             console.error(err);
