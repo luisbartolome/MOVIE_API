@@ -85,6 +85,7 @@ app.get('/movies/genres/:Genre', passport.authenticate("jwt", {
 });
 
 // get all directors
+
 app.get('/directors', passport.authenticate("jwt", {
     session: false
 }), (req, res) => {
