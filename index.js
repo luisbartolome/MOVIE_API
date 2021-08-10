@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-uuid = require("uuid");
+const uuid = require("uuid");
 //To import morgan into my package
 const morgan = require('morgan');
 //This ariable is what I will use to route my HTTP request and responses
@@ -27,9 +27,13 @@ mongoose.connect(process.env.CONNECTION_URI, {
 //Serving static files middleware
 
 app.use(express.static('public'));
+app.get('/documentation', (req, res) => {
+    res.sendFile('public/documentation.html', { root: __dirname });
+});
 app.use(bodyParser.json());
 //app argument is passing here to ensures that Express is available in  “auth.js” file as well.
 let auth = require('./auth')(app);
+
 
 const passport = require('passport');
 require('./passport');
