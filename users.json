@@ -1,0 +1,5 @@
+{"_id":{"$oid":"60f16047dea16419387e435f"},"Username":"alexei","Password":"6789","Email":"alexei22@gmail.com","Birthday":{"$date":"1977-03-23T00:00:00Z"},"FavoriteMovies":[{"$oid":"60eecb4da120aaa2b8cdbfd3"}]}
+{"_id":{"$oid":"60f5cdffd25cfeaa71570901"},"Username":"Hich","Password":"5432","Email":"hich@hotmail.com","Birthday":{"$date":"2002-02-02T00:00:00Z"},"FavoriteMovies":[]}
+{"_id":{"$oid":"60f5eed4a4b6b7f4d4122b29"},"Username":"sami22","Password":"4229","Email":"sami22blond@hotmail.com","Birthday":{"$date":"1977-03-23T00:00:00Z"},"FavoriteMovies":[{"$oid":"60eeee43a120aaa2b8cdbfd7"}]}
+{"_id":{"$oid":"610133a65256824d6882e8e4"},"FavoriteMovies":[{"$oid":"60eeee43a120aaa2b8cdbfd7"},{"$oid":"60eeee43a120aaa2b8cdbfd7"}],"Username":"matias23","Password":"321321","Email":"matias23@hotmail.com","Birthday":{"$date":"2000-10-09T22:00:00Z"},"__v":0}
+{"_id":{"$oid":"6107a9fed5e6bd08c49798e2"},"FavoriteMovies":[],"Username":"luis22","Password":"321321","Email":"luis22@asdasd.com","Birthday":{"$date":"2000-10-09T22:00:00Z"},"__v":0}
