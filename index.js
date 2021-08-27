@@ -43,6 +43,7 @@ app.get("/", (req, res) => {
 });
 
 //return JSON object when at /movies
+
 app.get("/movies", function(req, res) {
     Movies.find()
         .then(function(movies) {
@@ -53,6 +54,8 @@ app.get("/movies", function(req, res) {
             res.status(500).send("Error: " + error);
         });
 });
+
+
 // GETS JSON movie info when looking for specific title
 app.get('/movies/:Title', passport.authenticate("jwt", {
     session: false
