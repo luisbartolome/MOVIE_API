@@ -43,20 +43,16 @@ app.get("/", (req, res) => {
 });
 
 //return JSON object when at /movies
-app.get('/movies', passport.authenticate("jwt", {
-        session: false
-    }),
-    (req, res) => {
-        Movies.find()
-            .then((movies) => {
-                res.status(200).json(movies);
-            })
-            .catch((err) => {
-                console.error(err);
-                res.status(500).send('Error: ' + err);
-            });
-    });
-
+app.get("/movies", function(req, res) {
+    Movies.find()
+        .then(function(movies) {
+            res.status(201).json(movies);
+        })
+        .catch(function(error) {
+            console.error(error);
+            res.status(500).send("Error: " + error);
+        });
+});
 // GETS JSON movie info when looking for specific title
 app.get('/movies/:Title', passport.authenticate("jwt", {
     session: false
