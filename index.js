@@ -5,6 +5,17 @@ const uuid = require("uuid");
 const morgan = require('morgan');
 //This ariable is what I will use to route my HTTP request and responses
 const app = express();
+
+
+// import mongoose with the REST API
+const mongoose = require('mongoose');
+const Models = require('./models/models.js');
+
+const Movies = Models.Movie;
+const Users = Models.User;
+
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 //Cors access (allowed domains)
 const cors = require('cors');
 
@@ -36,16 +47,6 @@ app.use(
 );
 
 const { check, validationResult } = require('express-validator');
-
-// import mongoose with the REST API
-const mongoose = require('mongoose');
-const Models = require('./models/models.js');
-
-const Movies = Models.Movie;
-const Users = Models.User;
-
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-
 
 //Serving static files middleware
 
