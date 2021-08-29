@@ -7,6 +7,8 @@ const morgan = require('morgan');
 const app = express();
 //Cors access (allowed domains)
 const cors = require('cors');
+
+
 let allowedOrigins = [
     "http://localhost:8080",
     "http://testsite.com",
@@ -68,16 +70,22 @@ app.get("/", (req, res) => {
 
 //return JSON object when at /movies
 
-app.get("/movies", function(req, res) {
-    Movies.find()
-        .then(function(movies) {
-            res.status(201).json(movies);
-        })
-        .catch(function(error) {
-            console.error(error);
-            res.status(500).send("Error: " + error);
-        });
-});
+// Gets the list of data about ALL movies
+app.get(
+    "/movies",
+    passport.authenticate("jwt", { session: false }),
+    (req, res) => {
+        Movies.find()
+            .then((movies) => {
+                res.status(201).json(movies);
+            })
+            .catch((error) => {
+                console.error(error);
+                res.status(500).send("Error: " + error);
+            });
+    }
+);
+
 
 
 // GETS JSON movie info when looking for specific title
