@@ -19,18 +19,22 @@ const bodyParser = require('body-parser');
 //This ariable is what I will use to route my HTTP request and responses
 const app = express();
 
-const port = process.env.PORT || 8080;
-
-app.use(express.static('public'));
-app.get('/documentation', (req, res) => {
-    res.sendFile('public/documentation.html', { root: __dirname });
-});
-app.use(bodyParser.json());
-app.use(morgan('common'));
-
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
+//app argument is passing here to ensures that Express is available in  “auth.js” file as well.
+let auth = require('./auth')(app);
+
+let allowedOrigins = [
+    "http://localhost:8080",
+    "http://localhost:1234",
+    "https://api-myflix.herokuapp.com/movies",
+    "https://luisbartolome.github.io/myFlix-client/",
+    "https://backend-myflix1.herokuapp.com/movies",
+    "http://localhost:4200/",
+];
+
 //Cors access (allowed domains)
+
 const cors = require('cors');
 app.use(
     cors({
@@ -48,21 +52,12 @@ app.use(
     })
 );
 
-
-//app argument is passing here to ensures that Express is available in  “auth.js” file as well.
-let auth = require('./auth')(app);
-
-
-
-
-let allowedOrigins = [
-    "http://localhost:8080",
-    "http://localhost:1234",
-    "https://api-myflix.herokuapp.com/movies",
-    "https://luisbartolome.github.io/myFlix-client/",
-    "https://backend-myflix1.herokuapp.com/movies",
-    "http://localhost:4200/",
-];
+app.use(express.static('public'));
+app.get('/documentation', (req, res) => {
+    res.sendFile('public/documentation.html', { root: __dirname });
+});
+app.use(bodyParser.json());
+app.use(morgan('common'))
 
 
 // GET route located at the endpoint "/" that return a default textual respomse
