@@ -24,6 +24,22 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 
 //Cors access (allowed domains)
 const cors = require('cors');
+app.use(
+    cors({
+        origin: (origin, callback) => {
+            if (!origin) return callback(null, true);
+            if (allowedOrigins.indexOf(origin) === -1) {
+                // If a specific origin isn’t found on the list of allowed origins
+                let message =
+                    "The CORS policy for this application doesn’t allow access from origin " +
+                    origin;
+                return callback(new Error(message), false);
+            }
+            return callback(null, true);
+        },
+    })
+);
+
 const bodyParser = require('body-parser');
 //app argument is passing here to ensures that Express is available in  “auth.js” file as well.
 let auth = require('./auth')(app);
@@ -41,24 +57,6 @@ let allowedOrigins = [
     "https://backend-myflix1.herokuapp.com/movies",
     "http://localhost:4200/",
 ];
-
-app.use(
-    cors({
-        origin: (origin, callback) => {
-            if (!origin) return callback(null, true);
-            if (allowedOrigins.indexOf(origin) === -1) {
-                // If a specific origin isn’t found on the list of allowed origins
-                let message =
-                    "The CORS policy for this application doesn’t allow access from origin " +
-                    origin;
-                return callback(new Error(message), false);
-            }
-            return callback(null, true);
-        },
-    })
-);
-
-
 
 // GET route located at the endpoint "/" that return a default textual respomse
 app.get("/", (req, res) => {
