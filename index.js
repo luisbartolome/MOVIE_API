@@ -5,7 +5,14 @@ const uuid = require("uuid");
 const morgan = require('morgan');
 //This ariable is what I will use to route my HTTP request and responses
 const app = express();
+const passport = require("passport");
 
+//Cors access (allowed domains)
+const cors = require('cors');
+
+require("./passport");
+
+const { check, validationResult } = require('express-validator');
 
 // import mongoose with the REST API
 const mongoose = require('mongoose');
@@ -16,13 +23,9 @@ const Users = Models.User;
 
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-//Cors access (allowed domains)
-const cors = require('cors');
-
 
 let allowedOrigins = [
     "http://localhost:8080",
-    "http://testsite.com",
     "http://localhost:1234",
     "https://api-myflix.herokuapp.com/movies",
     "https://luisbartolome.github.io/myFlix-client/",
@@ -46,7 +49,6 @@ app.use(
     })
 );
 
-const { check, validationResult } = require('express-validator');
 
 //Serving static files middleware
 
@@ -57,10 +59,6 @@ app.get('/documentation', (req, res) => {
 app.use(bodyParser.json());
 //app argument is passing here to ensures that Express is available in  “auth.js” file as well.
 let auth = require('./auth')(app);
-
-
-const passport = require('passport');
-require('./passport');
 
 app.use(morgan('common'));
 
