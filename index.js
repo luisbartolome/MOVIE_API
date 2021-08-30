@@ -14,16 +14,26 @@ const passport = require("passport");
 require("./passport");
 
 const { check, validationResult } = require('express-validator');
+
 const bodyParser = require('body-parser');
 
 //This ariable is what I will use to route my HTTP request and responses
 const app = express();
 
+const port = process.env.PORT || 8080;
+
+app.use(express.static('public'));
+app.get('/documentation', (req, res) => {
+    res.sendFile('public/documentation.html', { root: __dirname });
+});
+
+app.use(bodyParser.json());
+app.use(morgan('common'));
+
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-//app argument is passing here to ensures that Express is available in  “auth.js” file as well.
-let auth = require('./auth')(app);
-
+//Cors access (allowed domains)
+const cors = require('cors');
 let allowedOrigins = [
     "http://localhost:8080",
     "http://localhost:1234",
@@ -33,9 +43,6 @@ let allowedOrigins = [
     "http://localhost:4200/",
 ];
 
-//Cors access (allowed domains)
-
-const cors = require('cors');
 app.use(
     cors({
         origin: (origin, callback) => {
@@ -52,13 +59,8 @@ app.use(
     })
 );
 
-app.use(express.static('public'));
-app.get('/documentation', (req, res) => {
-    res.sendFile('public/documentation.html', { root: __dirname });
-});
-app.use(bodyParser.json());
-app.use(morgan('common'))
-
+//app argument is passing here to ensures that Express is available in  “auth.js” file as well.
+let auth = require('./auth')(app);
 
 // GET route located at the endpoint "/" that return a default textual respomse
 app.get("/", (req, res) => {
