@@ -1,19 +1,30 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const uuid = require("uuid");
 //To import morgan into my package
 const morgan = require('morgan');
-//This ariable is what I will use to route my HTTP request and responses
-const app = express();
-
-const { check, validationResult } = require('express-validator');
-
 // import mongoose with the REST API
 const mongoose = require('mongoose');
 const Models = require('./models/models.js');
 
 const Movies = Models.Movie;
 const Users = Models.User;
+
+const passport = require("passport");
+
+require("./passport");
+const { check, validationResult } = require('express-validator');
+const bodyParser = require('body-parser');
+
+//This ariable is what I will use to route my HTTP request and responses
+const app = express();
+const port = process.env.PORT || 8080;
+
+app.use(express.static('public'));
+app.get('/documentation', (req, res) => {
+    res.sendFile('public/documentation.html', { root: __dirname });
+});
+app.use(bodyParser.json());
+app.use(morgan('common'));
 
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -45,21 +56,8 @@ app.use(
     })
 );
 
-//Serving static files middleware
-
-app.use(express.static('public'));
-app.get('/documentation', (req, res) => {
-    res.sendFile('public/documentation.html', { root: __dirname });
-});
-app.use(bodyParser.json());
 //app argument is passing here to ensures that Express is available in  “auth.js” file as well.
 let auth = require('./auth')(app);
-
-app.use(morgan('common'));
-
-const passport = require("passport");
-
-require("./passport");
 
 // GET route located at the endpoint "/" that return a default textual respomse
 app.get("/", (req, res) => {
