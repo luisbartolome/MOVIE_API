@@ -5,12 +5,6 @@ const uuid = require("uuid");
 const morgan = require('morgan');
 //This ariable is what I will use to route my HTTP request and responses
 const app = express();
-const passport = require("passport");
-
-//Cors access (allowed domains)
-const cors = require('cors');
-
-require("./passport");
 
 const { check, validationResult } = require('express-validator');
 
@@ -23,6 +17,8 @@ const Users = Models.User;
 
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
+//Cors access (allowed domains)
+const cors = require('cors');
 
 let allowedOrigins = [
     "http://localhost:8080",
@@ -49,7 +45,6 @@ app.use(
     })
 );
 
-
 //Serving static files middleware
 
 app.use(express.static('public'));
@@ -61,6 +56,10 @@ app.use(bodyParser.json());
 let auth = require('./auth')(app);
 
 app.use(morgan('common'));
+
+const passport = require("passport");
+
+require("./passport");
 
 // GET route located at the endpoint "/" that return a default textual respomse
 app.get("/", (req, res) => {
