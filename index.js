@@ -1,4 +1,5 @@
 const express = require('express');
+const { response } = require("express");
 const uuid = require("uuid");
 //To import morgan into my package
 const morgan = require('morgan');
@@ -9,8 +10,15 @@ const Models = require('./models/models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
 
+const passport = require("passport");
+require("./passport");
+
+const { check, validationResult } = require('express-validator');
+const bodyParser = require('body-parser');
+
 //This ariable is what I will use to route my HTTP request and responses
 const app = express();
+
 const port = process.env.PORT || 8080;
 
 app.use(express.static('public'));
@@ -40,13 +48,11 @@ app.use(
     })
 );
 
-const bodyParser = require('body-parser');
+
 //app argument is passing here to ensures that Express is available in  “auth.js” file as well.
 let auth = require('./auth')(app);
-const passport = require("passport");
-require("./passport");
 
-const { check, validationResult } = require('express-validator');
+
 
 
 let allowedOrigins = [
@@ -57,6 +63,7 @@ let allowedOrigins = [
     "https://backend-myflix1.herokuapp.com/movies",
     "http://localhost:4200/",
 ];
+
 
 // GET route located at the endpoint "/" that return a default textual respomse
 app.get("/", (req, res) => {
