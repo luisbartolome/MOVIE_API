@@ -22,11 +22,6 @@ const app = express();
 
 const port = process.env.PORT || 8080;
 
-app.use(express.static('public'));
-app.get('/documentation', (req, res) => {
-    res.sendFile('public/documentation.html', { root: __dirname });
-});
-
 app.use(bodyParser.json());
 app.use(morgan('common'));
 
@@ -34,6 +29,7 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 
 //Cors access (allowed domains)
 const cors = require('cors');
+
 let allowedOrigins = [
     "http://localhost:8080",
     "http://localhost:1234",
