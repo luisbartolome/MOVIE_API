@@ -9,12 +9,6 @@ const Models = require('./models/models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
 
-const passport = require("passport");
-
-require("./passport");
-const { check, validationResult } = require('express-validator');
-const bodyParser = require('body-parser');
-
 //This ariable is what I will use to route my HTTP request and responses
 const app = express();
 const port = process.env.PORT || 8080;
@@ -30,6 +24,14 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 
 //Cors access (allowed domains)
 const cors = require('cors');
+const bodyParser = require('body-parser');
+//app argument is passing here to ensures that Express is available in  “auth.js” file as well.
+let auth = require('./auth')(app);
+const passport = require("passport");
+require("./passport");
+
+const { check, validationResult } = require('express-validator');
+
 
 let allowedOrigins = [
     "http://localhost:8080",
@@ -56,8 +58,7 @@ app.use(
     })
 );
 
-//app argument is passing here to ensures that Express is available in  “auth.js” file as well.
-let auth = require('./auth')(app);
+
 
 // GET route located at the endpoint "/" that return a default textual respomse
 app.get("/", (req, res) => {
