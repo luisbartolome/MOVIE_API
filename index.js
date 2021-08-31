@@ -36,6 +36,9 @@ app.use(
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+//app argument is passing here to ensures that Express is available in  “auth.js” file as well.
+let auth = require('./auth')(app);
+
 
 const { check, validationResult } = require('express-validator');
 
@@ -53,8 +56,6 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 
 app.use(morgan('common'));
 
-//app argument is passing here to ensures that Express is available in  “auth.js” file as well.
-let auth = require('./auth')(app);
 
 //Return the documentation html
 app.use(express.static('public'));
