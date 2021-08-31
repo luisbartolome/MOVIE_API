@@ -58,7 +58,6 @@ app.use(morgan('common'));
 
 
 //Return the documentation html
-app.use(express.static('public'));
 app.get('/documentation', (req, res) => {
     res.sendFile('public/documentation.html', { root: __dirname });
 });
@@ -320,6 +319,9 @@ app.delete('/users/:Username', passport.authenticate("jwt", {
             console.error(err);
             res.status(500).send('Error: ' + err);
         });
+
+    app.use(express.static('public'));
+
     // Error Handling
     app.use((err, req, res, next) => {
         console.error(err.stack);
