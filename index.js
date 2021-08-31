@@ -34,6 +34,9 @@ app.use(
     })
 );
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
 const { check, validationResult } = require('express-validator');
 
 // import mongoose with the REST API
@@ -47,8 +50,6 @@ const Users = Models.User;
 
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
 
 app.use(morgan('common'));
 
