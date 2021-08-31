@@ -2,23 +2,9 @@ const express = require('express');
 const uuid = require("uuid");
 //To import morgan into my package
 const morgan = require('morgan');
-// import mongoose with the REST API
-const mongoose = require('mongoose');
-const Models = require('./models/models.js');
-
-const Movies = Models.Movie;
-const Users = Models.User;
-
-const { check, validationResult } = require('express-validator');
 
 //This ariable is what I will use to route my HTTP request and responses
 const app = express();
-
-const port = process.env.PORT || 8080;
-
-app.use(morgan('common'));
-
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Cors access (allowed domains)
 const cors = require('cors');
@@ -29,7 +15,7 @@ let allowedOrigins = [
     "https://api-myflix.herokuapp.com/movies",
     "https://luisbartolome.github.io/myFlix-client/",
     "https://backend-myflix1.herokuapp.com/movies",
-    "http://localhost:4200/",
+    "http://localhost:4200",
 ];
 
 app.use(
@@ -48,13 +34,32 @@ app.use(
     })
 );
 
+const { check, validationResult } = require('express-validator');
+
+// import mongoose with the REST API
+const mongoose = require('mongoose');
+const Models = require('./models/models.js');
+const passport = require("passport");
+require("./passport");
+
+const Movies = Models.Movie;
+const Users = Models.User;
+
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+gitapp.use(morgan('common'));
+
 //app argument is passing here to ensures that Express is available in  “auth.js” file as well.
 let auth = require('./auth')(app);
-const passport = require("passport");
-require("./passport");
+
+//Return the documentation html
+app.use(express.static('public'));
+app.get('/documentation', (req, res) => {
+    res.sendFile('public/documentation.html', { root: __dirname });
+});
 
 // GET route located at the endpoint "/" that return a default textual respomse
 app.get("/", (req, res) => {
