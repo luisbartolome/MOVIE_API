@@ -50,7 +50,7 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-gitapp.use(morgan('common'));
+app.use(morgan('common'));
 
 //app argument is passing here to ensures that Express is available in  “auth.js” file as well.
 let auth = require('./auth')(app);
