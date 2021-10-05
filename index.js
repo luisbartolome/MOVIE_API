@@ -219,14 +219,14 @@ app.get('/users/:Username', (req, res) => {
   Birthday: Date
 }*/
 
-app.put('/users/:Username', passport.authenticate('jwt', [
+app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
         check('Username', 'Username is required').isLength({ min: 5 }),
         check(
             'Username',
             'Username contains non alphanumeric characters - not allowed.'
         ).isAlphanumeric(),
         check('Email', 'Email does not appear to be valid').isEmail(),
-    ], { session: false }),
+    ],
     (req, res) => {
         const updates = {
             Username: req.body.Username,
