@@ -213,27 +213,41 @@ app.get('/users/:Username', (req, res) => {
   Username: String,
   (required)
   Password: String,
-  (required)
+  (optional)
   Email: String,
   (required)
   Birthday: Date
 }*/
 
-app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
+app.put('/users/:Username', passport.authenticate('jwt', [
+        check('Username', 'Username is required').isLength({ min: 5 }),
+        check(
+            'Username',
+            'Username contains non alphanumeric characters - not allowed.'
+        ).isAlphanumeric(),
+        check('Email', 'Email does not appear to be valid').isEmail(),
+    ], { session: false }),
     (req, res) => {
+        const updates = {
+            Username: req.body.Username,
+            Email: req.body.Email,
+            Birthday: req.body.Birthday,
+        };
+        if (req.body.Password) {
+            updates.Password = req.body.Password;
+        }
+
         Users.findOneAndUpdate(
             //First parameter
             { Username: req.params.Username },
             //Second parameter
             {
+
                 //SET new values that extracted from the request body (meaning that they come from a request sent by the user).
-                $set: {
-                    Username: req.body.Username,
-                    Password: req.body.Password,
-                    Email: req.body.Email,
-                    Birthday: req.body.Birthday,
-                },
+                $set: updates
+
             },
+
             //Third parameter
             { new: true }, // This line makes sure that the updated document is returned
             //Fourth parameter that itself have two parameters (any errors that might have occured + represents the document that was just updated )
