@@ -219,7 +219,7 @@ app.get('/users/:Username', (req, res) => {
   Birthday: Date
 }*/
 
-app.put('/users/:username', passport.authenticate('jwt', { session: false }),
+app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
     (req, res) => {
         Users.findOneAndUpdate(
             //First parameter
