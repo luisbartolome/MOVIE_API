@@ -234,7 +234,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
             Birthday: req.body.Birthday,
         };
         if (req.body.Password) {
-            updates.Password = req.body.Password;
+            updates.password = Users.hashPassword(req.body.Password);
         }
 
         Users.findOneAndUpdate(
@@ -242,10 +242,8 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
             { Username: req.params.Username },
             //Second parameter
             {
-
                 //SET new values that extracted from the request body (meaning that they come from a request sent by the user).
                 $set: updates
-
             },
 
             //Third parameter
