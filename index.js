@@ -234,7 +234,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
             Birthday: req.body.Birthday,
         };
         if (req.body.Password) {
-            updates.password = Users.hashPassword(req.body.Password);
+            updates.Password = Users.hashPassword(req.body.Password);
         }
 
         Users.findOneAndUpdate(
